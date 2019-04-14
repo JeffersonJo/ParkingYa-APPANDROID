@@ -1,0 +1,33 @@
+<resources>
+    <!--Inicio-->
+    <string name="app_name">ParkingYa!</string>
+
+    <!--Login del usuario-->
+    <string name="userEdTxtLogin">Email:</string>
+    <string name="passEdTxtLogin">Contraseña:</string>
+    <string name="regTextLogin">No tienes cuenta aún? Crea una ahora!</string>
+    <string name="enterBtnLogin">Ingresar</string>
+
+    <!--Registro del usuario-->
+    <string name="regNameUser">Nombres y apellidos</string>
+    <string name="regEmailUser">Email</string>
+    <string name="regPassUser">Contraseña</string>
+    <string name="regAgeUser">Edad</string>
+    <string name="regAddressUser">Dirección</string>
+    <string name="regPhoneUser">Telefono</string>
+    <string name="regBtnRegistroUser">Registrarse</string>
+
+</resources>
+
+
+    <!-- Crear accesos directos
+    <string name="shortlabel1">Login</string>
+    <string name="longlabel1">Abrir Login</string>
+    <string name="disabledmessage1">Desactivado</string>
+
+    <string name="shortlabel2">Registro</string>
+    <string name="longlabel2">Abrir Registro</string>
+    <string name="disabledmessage2">Desactivado</string>-->
+
+
+
