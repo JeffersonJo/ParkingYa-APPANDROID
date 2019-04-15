@@ -2,6 +2,7 @@ package com.example.jeffe.login;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -125,7 +126,7 @@ public class LoginMain extends AppCompatActivity {
                         String phone= jsonResponse.getString("phone");
 
                         //Enviar datos a otro activity
-                        Intent intent= new Intent(LoginMain.this, VistaUsuarioRegistradoMain.class);
+                        Intent intent= new Intent(LoginMain.this, ParkingMapsActivity.class);
                         intent.putExtra("name", name);
                         intent.putExtra("email", email);
                         intent.putExtra("age", age);
@@ -139,7 +140,6 @@ public class LoginMain extends AppCompatActivity {
                         progressDialog.dismiss();
                         progressDialog.show();
                         progressDialog.setCancelable(true);
-
 
                         LoginMain.this.startActivity(intent);
 
@@ -170,6 +170,7 @@ public class LoginMain extends AppCompatActivity {
 
         Intent intentRegistro= new Intent(LoginMain.this, RegistroMain.class);
         LoginMain.this.startActivity(intentRegistro);
+
     }
 
 }

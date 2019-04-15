@@ -1,20 +1,11 @@
 package com.example.jeffe.login;
 
-import android.app.Activity;
+
 import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.design.widget.BottomNavigationView;
-import android.support.v4.app.Fragment;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.TextView;
+
 
 public class VistaUsuarioRegistradoMain extends AppCompatActivity {
 
@@ -53,38 +44,7 @@ public class VistaUsuarioRegistradoMain extends AppCompatActivity {
         //getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new FragmentTest()).commit();
 
 
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-
     }
-
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            Fragment selectedFrag= null;
-
-            switch (item.getItemId()) {
-                case R.id.nav_home:
-                    Intent intent = new Intent(VistaUsuarioRegistradoMain.this, LoginMain.class);
-                    startActivity(intent);
-                    break;
-                case R.id.nav_map:
-                    selectedFrag= new RegistroFragment();
-                    break;
-                case R.id.nav_user:
-                    selectedFrag= new FragmentPerfil();
-                    break;
-            }
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFrag).commit();
-
-            return true;
-        }
-    };
-
-
-
 
 }
 

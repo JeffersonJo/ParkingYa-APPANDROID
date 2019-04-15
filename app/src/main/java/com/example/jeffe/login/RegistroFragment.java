@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -29,8 +29,10 @@ public class RegistroFragment extends Fragment implements View.OnClickListener {
     DatePickerDialog datePickerDialog;
     Calendar c;
 
+    TextView edad_a_registro;
+
     EditText nombre_a_registro, correo_a_registro,
-            contraseña_a_registro, edad_a_registro,
+            contraseña_a_registro,
             direccion_a_registro, tel_a_registro;
 
     Button btn_RegistUser;
@@ -38,12 +40,12 @@ public class RegistroFragment extends Fragment implements View.OnClickListener {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v= inflater.inflate(R.layout.registrofrag, container, false);
+        View v= inflater.inflate(R.layout.activity_registro_fragment, container, false);
 
         nombre_a_registro=(EditText)v.findViewById(R.id.editText_RegNombre);
         correo_a_registro=(EditText)v.findViewById(R.id.editText_RegCorreo);
         contraseña_a_registro=(EditText)v.findViewById(R.id.editText_RegConstraseña);
-        edad_a_registro=(EditText)v.findViewById(R.id.editText_RegEdad);
+        edad_a_registro=(TextView) v.findViewById(R.id.editText_RegEdad);
         direccion_a_registro=(EditText)v.findViewById(R.id.editText_RegDireccion);
         tel_a_registro=(EditText)v.findViewById(R.id.editText_RegTel);
 
