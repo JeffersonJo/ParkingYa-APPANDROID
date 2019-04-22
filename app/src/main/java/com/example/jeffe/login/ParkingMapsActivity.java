@@ -5,6 +5,9 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -21,7 +24,9 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
@@ -235,8 +240,6 @@ public class ParkingMapsActivity extends AppCompatActivity implements OnMapReady
     @Override
     public void onInfoWindowClick(Marker marker) {
 
-        //Toast.makeText(this, "Info window clicked", Toast.LENGTH_SHORT).show();
-
         AlertDialog.Builder builder= new AlertDialog.Builder(ParkingMapsActivity.this);
         //builder.setTitle("");
         builder.setMessage(R.string.reservasDialog);
@@ -246,8 +249,15 @@ public class ParkingMapsActivity extends AppCompatActivity implements OnMapReady
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
+                Snackbar snackbar;
+                snackbar = Snackbar.make(relativeLayout, "Reserva Confirmada !", Snackbar.LENGTH_SHORT);
+                View snackBarView = snackbar.getView();
+                TextView textView = (TextView) snackBarView.findViewById(android.support.design.R.id.snackbar_text);
+                textView.setTextColor(Color.GREEN);
+                snackbar.show();
+
                 //Toast.makeText(ParkingMapsActivity.this, "Todo bien, todo bien", Toast.LENGTH_SHORT).show();
-                Snackbar.make(relativeLayout,"Reserva Confirmada !", Snackbar.LENGTH_LONG).show();
+                //Snackbar.make(relativeLayout,"Reserva Confirmada !", R.color.colorPrimaryDark Snackbar.LENGTH_LONG).show();
 
                 //Intent intentFragment= new Intent(MapsActivity.this, ReservaActivity.class);
                 //MapsActivity.this.startActivity(intentFragment);
