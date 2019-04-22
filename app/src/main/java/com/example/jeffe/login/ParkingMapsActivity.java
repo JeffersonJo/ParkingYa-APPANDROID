@@ -1,6 +1,7 @@
 package com.example.jeffe.login;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -8,6 +9,7 @@ import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
@@ -19,6 +21,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 
 import android.util.Log;
 import android.view.MenuItem;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
@@ -43,6 +46,7 @@ public class ParkingMapsActivity extends AppCompatActivity implements OnMapReady
     private Marker pBuenavista;
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
     private boolean mPermissionDenied = false;
+    private RelativeLayout relativeLayout;
 
     public ParkingMapsActivity(){
 
@@ -52,6 +56,8 @@ public class ParkingMapsActivity extends AppCompatActivity implements OnMapReady
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_parking_maps);
+
+        relativeLayout =findViewById(R.id.capaRelativL);
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -240,7 +246,8 @@ public class ParkingMapsActivity extends AppCompatActivity implements OnMapReady
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
-                Toast.makeText(ParkingMapsActivity.this, "Todo bien, todo bien", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(ParkingMapsActivity.this, "Todo bien, todo bien", Toast.LENGTH_SHORT).show();
+                Snackbar.make(relativeLayout,"Reserva Confirmada !", Snackbar.LENGTH_LONG).show();
 
                 //Intent intentFragment= new Intent(MapsActivity.this, ReservaActivity.class);
                 //MapsActivity.this.startActivity(intentFragment);
