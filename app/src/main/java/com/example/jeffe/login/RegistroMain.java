@@ -2,6 +2,8 @@ package com.example.jeffe.login;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,7 +12,9 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -22,6 +26,8 @@ import org.json.JSONObject;
 import java.util.Calendar;
 import java.util.Date;
 
+import es.dmoral.toasty.Toasty;
+
 public class RegistroMain extends AppCompatActivity implements View.OnClickListener {
 
     DatePickerDialog datePickerDialog;
@@ -32,6 +38,7 @@ public class RegistroMain extends AppCompatActivity implements View.OnClickListe
              direccion_a_registro, tel_a_registro;
 
     Button btn_RegistUser;
+    LinearLayout RegistroCapa;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -129,6 +136,7 @@ public class RegistroMain extends AppCompatActivity implements View.OnClickListe
                     if(success){
                         Intent intent= new Intent(RegistroMain.this,LoginMain.class);
                         RegistroMain.this.startActivity(intent);
+                        Toasty.success(RegistroMain.this, "Registrado con exito !", Toast.LENGTH_SHORT, true).show();
                     }else{
                         AlertDialog.Builder builder= new AlertDialog.Builder(RegistroMain.this);
                         builder.setMessage("Error al registrar")

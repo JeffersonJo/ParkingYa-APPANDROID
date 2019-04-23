@@ -68,36 +68,45 @@ public class ParkingMapsActivity extends AppCompatActivity implements OnMapReady
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-        //BottomNavigationView navigationActivity= (BottomNavigationView) findViewById(R.id.navigation);
-        //navigationActivity.setOnNavigationItemSelectedListener(AbrirActivity);
+        BottomNavigationView navigationActivity= (BottomNavigationView) findViewById(R.id.navigation);
+        navigationActivity.setOnNavigationItemSelectedListener(AbrirActivity);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        //navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
      //Metodo para abrir activitis no fragments
-    /**private BottomNavigationView.OnNavigationItemSelectedListener AbrirActivity=
+    private BottomNavigationView.OnNavigationItemSelectedListener AbrirActivity=
              new BottomNavigationView.OnNavigationItemSelectedListener() {
                  @Override
                  public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
 
                      switch (menuItem.getItemId()) {
                          case R.id.nav_home:
-                             Intent intent = new Intent(ParkingMapsActivity.this, VistaUsuarioRegistradoMain.class);
-                             startActivity(intent);
+                             Snackbar.make(relativeLayout,"Seguro que quiere salir?",Snackbar.LENGTH_LONG)
+                                     .setAction("SI", new View.OnClickListener() {
+                                         @Override
+                                         public void onClick(View v) {
+                                             Intent intentExit = new Intent(ParkingMapsActivity.this, LoginMain.class);
+                                             startActivity(intentExit);
+                                         }
+                                     })
+                                     .show();
+
                              break;
                          case R.id.nav_map:
                              Intent intentMap = new Intent(ParkingMapsActivity.this, ParkingMapsActivity.class);
                              startActivity(intentMap);
                              break;
                          case R.id.nav_user:
-                             //selectedFrag= new FragmentPerfil();
+                             Intent intentUser = new Intent(ParkingMapsActivity.this, VistaUsuarioRegistradoMain.class);
+                             startActivity(intentUser);
 
                              break;
                      }
                      return true;
                  }
-             };*/
+             };
 
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+    /**private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
         @Override
@@ -122,7 +131,7 @@ public class ParkingMapsActivity extends AppCompatActivity implements OnMapReady
 
             return true;
         }
-    };
+    };*/
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
@@ -238,22 +247,36 @@ public class ParkingMapsActivity extends AppCompatActivity implements OnMapReady
 
 
     @Override
-    public void onInfoWindowClick(Marker marker) {
-
-        AlertDialog.Builder builder= new AlertDialog.Builder(ParkingMapsActivity.this);
-        //builder.setTitle("");
-        builder.setMessage(R.string.reservasDialog);
-        builder.setNegativeButton("Cancelar",null);
-
-        builder.setPositiveButton("Reservar", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
+    public void onInfoWindowClick(final Marker marker) {
+               //String name_park= pPrado.getTitle();
 
                 Snackbar snackbar;
-                snackbar = Snackbar.make(relativeLayout, "Reserva Confirmada !", Snackbar.LENGTH_SHORT);
+                snackbar = Snackbar.make(relativeLayout, "Esta seguro que desea reservar aqui?", Snackbar.LENGTH_LONG);
                 View snackBarView = snackbar.getView();
+                snackbar.setAction("Reservar", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Snackbar snackbarOne = Snackbar.make(relativeLayout, "Reservado !", Snackbar.LENGTH_SHORT);
+                        snackbarOne.setActionTextColor(Color.WHITE);
+                        View snackBarOneView = snackbarOne.getView();
+                        snackBarOneView.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+                        snackbarOne.show();
+
+                        /**Intent intent= new Intent(ParkingMapsActivity.this, ParkingReservaActivity.class);
+                        intent.putExtra("name_park", name_park);
+                        intent.putExtra("name_user", name_user);
+                        intent.putExtra("license", license);
+                        intent.putExtra("hours", hours);*/
+                    }
+                });
+                //ACTION
+                snackbar.setActionTextColor(Color.WHITE);
+                //BACKGROUND
+                snackBarView.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+                //TEXT
                 TextView textView = (TextView) snackBarView.findViewById(android.support.design.R.id.snackbar_text);
-                textView.setTextColor(Color.GREEN);
+                textView.setTextColor(Color.WHITE);
+
                 snackbar.show();
 
                 //Toast.makeText(ParkingMapsActivity.this, "Todo bien, todo bien", Toast.LENGTH_SHORT).show();
@@ -261,8 +284,6 @@ public class ParkingMapsActivity extends AppCompatActivity implements OnMapReady
 
                 //Intent intentFragment= new Intent(MapsActivity.this, ReservaActivity.class);
                 //MapsActivity.this.startActivity(intentFragment);
-            }
-        });
-        builder.show();
+
+        }
     }
-}

@@ -139,7 +139,6 @@ public class LoginMain extends AppCompatActivity {
                         progressDialog.setIndeterminate(false);
                         progressDialog.dismiss();
                         progressDialog.show();
-                        progressDialog.setCancelable(true);
 
                         LoginMain.this.startActivity(intent);
 
