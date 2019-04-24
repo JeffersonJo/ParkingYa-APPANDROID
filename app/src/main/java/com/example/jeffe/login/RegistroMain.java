@@ -1,9 +1,16 @@
 package com.example.jeffe.login;
 
 import android.app.DatePickerDialog;
+import android.app.NotificationChannel;
+import android.app.NotificationChannelGroup;
+import android.app.NotificationManager;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -30,6 +37,7 @@ import es.dmoral.toasty.Toasty;
 
 public class RegistroMain extends AppCompatActivity implements View.OnClickListener {
 
+
     DatePickerDialog datePickerDialog;
     Calendar c;
 
@@ -38,8 +46,8 @@ public class RegistroMain extends AppCompatActivity implements View.OnClickListe
              direccion_a_registro, tel_a_registro;
 
     Button btn_RegistUser;
-    LinearLayout RegistroCapa;
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

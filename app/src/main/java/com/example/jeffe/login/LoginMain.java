@@ -126,7 +126,7 @@ public class LoginMain extends AppCompatActivity {
                         String phone= jsonResponse.getString("phone");
 
                         //Enviar datos a otro activity
-                        Intent intent= new Intent(LoginMain.this, ParkingMapsActivity.class);
+                        Intent intent= new Intent(LoginMain.this, VistaUsuarioRegistradoMain.class);
                         intent.putExtra("name", name);
                         intent.putExtra("email", email);
                         intent.putExtra("age", age);
@@ -173,3 +173,4 @@ public class LoginMain extends AppCompatActivity {
     }
 
 }
+

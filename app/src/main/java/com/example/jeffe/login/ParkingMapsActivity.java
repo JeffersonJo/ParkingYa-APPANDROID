@@ -179,7 +179,9 @@ public class ParkingMapsActivity extends AppCompatActivity implements OnMapReady
                 .position(PARKING_BUENAVISTA)
                 .title("Parking Ya! - BUENAVISTA")
                 .snippet("Horario de atención: 6:00 am - 10:00 pm"));
+
     }
+
 
     //Control encontrar mi ubicacion
     private void enableMyLocation() {
@@ -248,7 +250,8 @@ public class ParkingMapsActivity extends AppCompatActivity implements OnMapReady
 
     @Override
     public void onInfoWindowClick(final Marker marker) {
-               //String name_park= pPrado.getTitle();
+
+                final String name_park= pPrado.getTitle();
 
                 Snackbar snackbar;
                 snackbar = Snackbar.make(relativeLayout, "Esta seguro que desea reservar aqui?", Snackbar.LENGTH_LONG);
@@ -256,17 +259,16 @@ public class ParkingMapsActivity extends AppCompatActivity implements OnMapReady
                 snackbar.setAction("Reservar", new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Snackbar snackbarOne = Snackbar.make(relativeLayout, "Reservado !", Snackbar.LENGTH_SHORT);
+                        /**Snackbar snackbarOne = Snackbar.make(relativeLayout, "Reservado !", Snackbar.LENGTH_SHORT);
                         snackbarOne.setActionTextColor(Color.WHITE);
                         View snackBarOneView = snackbarOne.getView();
                         snackBarOneView.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
-                        snackbarOne.show();
+                        snackbarOne.show();*/
 
-                        /**Intent intent= new Intent(ParkingMapsActivity.this, ParkingReservaActivity.class);
-                        intent.putExtra("name_park", name_park);
-                        intent.putExtra("name_user", name_user);
-                        intent.putExtra("license", license);
-                        intent.putExtra("hours", hours);*/
+                        //Enviar nombre del parqueadero
+                        Intent intentReserv = new Intent(ParkingMapsActivity.this, Reservations.class);
+                        intentReserv.putExtra("name_park", name_park);
+                        startActivity(intentReserv);
                     }
                 });
                 //ACTION
