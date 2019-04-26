@@ -87,14 +87,14 @@ public class ParkingMapsActivity extends AppCompatActivity implements OnMapReady
                              snackbar.setAction("SI", new View.OnClickListener() {
                                          @Override
                                          public void onClick(View v) {
-                                             /**Intent intent = new Intent(Intent.ACTION_MAIN);
+                                             Intent intent = new Intent(Intent.ACTION_MAIN);
                                              intent.addCategory(Intent.CATEGORY_HOME);
                                              intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                              startActivity(intent);
-                                             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);*/
+                                             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
-                                             Intent intentExit = new Intent(ParkingMapsActivity.this, LoginMain.class);
-                                             startActivity(intentExit);
+                                             //Intent intentExit = new Intent(ParkingMapsActivity.this, LoginMain.class);
+                                             //startActivity(intentExit);
                                          }
                                      });
 

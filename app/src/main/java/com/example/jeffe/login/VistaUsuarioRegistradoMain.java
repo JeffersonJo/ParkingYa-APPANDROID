@@ -110,7 +110,7 @@ public class VistaUsuarioRegistradoMain extends AppCompatActivity {
                     return true;
                 }
             };
-
+    }
 
     /**@Override
     public void finish() {
@@ -118,7 +118,6 @@ public class VistaUsuarioRegistradoMain extends AppCompatActivity {
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }*/
 
-}
 
 
 

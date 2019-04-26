@@ -1,4 +1,4 @@
-package com.example.jeffe.login;
+package com.example.jeffe.login.FragmentsOption;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
@@ -18,6 +18,9 @@ import android.widget.TextView;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
+import com.example.jeffe.login.LoginMain;
+import com.example.jeffe.login.R;
+import com.example.jeffe.login.RegistroRequest;
 
 import org.json.JSONException;
 import org.json.JSONObject;

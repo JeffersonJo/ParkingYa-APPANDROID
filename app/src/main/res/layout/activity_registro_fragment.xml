@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#ffff"
     android:orientation="vertical"
-    tools:context=".RegistroFragment">
+    tools:context=".FragmentsOption.RegistroFragment">
 
     <LinearLayout
         android:layout_width="match_parent"

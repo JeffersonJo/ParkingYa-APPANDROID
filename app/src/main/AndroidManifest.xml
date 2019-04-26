@@ -40,6 +40,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ParkingMapsActivity" />
+        <activity android:name=".Reservations"/>
         <activity android:name=".RegistroMain" />
         <activity android:name=".SplashMain" />
         <activity android:name=".VistaUsuarioRegistradoMain" />
