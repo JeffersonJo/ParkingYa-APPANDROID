@@ -134,6 +134,7 @@ public class LoginMain extends AppCompatActivity {
                         intent.putExtra("address", address);
                         intent.putExtra("phone", phone);
 
+
                         final ProgressDialog progressDialog = new ProgressDialog(LoginMain.this);
                         progressDialog.setMessage("Buscando parqueaderos...");
                         progressDialog.setIndeterminate(false);

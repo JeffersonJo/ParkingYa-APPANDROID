@@ -7,7 +7,8 @@
     android:layout_height="match_parent"
     xmlns:design="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    tools:context=".VistaUsuarioRegistradoMain">
+    tools:context=".VistaUsuarioRegistradoMain"
+    android:id="@+id/RelativeLayoutUser">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -24,18 +25,8 @@
                 android:id="@+id/img_user_reg"
                 android:layout_width="wrap_content"
                 android:layout_height="128dp"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginStart="140dp"
-                android:layout_marginLeft="140dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="143dp"
-                android:layout_marginRight="143dp"
-                android:gravity="center"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="30dp"
                 app:srcCompat="@drawable/user" />
 
             <TextView
@@ -154,10 +145,22 @@
 
     </RelativeLayout>
 
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/user_page_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_alignParentBottom="true"
+        design:menu="@menu/bottom_navigation"
+        android:background="?android:attr/windowBackground"
+
+        app:itemIconTint="@color/colorPrimaryDark"
+        app:itemTextColor="@color/colorPrimaryDark" />
+
     <LinearLayout
-        android:layout_width="360dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal"
+        android:layout_marginLeft="6dp"
         android:layout_marginTop="360dp"
         android:orientation="vertical">
 

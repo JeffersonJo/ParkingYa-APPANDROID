@@ -81,15 +81,32 @@ public class ParkingMapsActivity extends AppCompatActivity implements OnMapReady
 
                      switch (menuItem.getItemId()) {
                          case R.id.nav_home:
-                             Snackbar.make(relativeLayout,"Seguro que quiere salir?",Snackbar.LENGTH_LONG)
-                                     .setAction("SI", new View.OnClickListener() {
+                             Snackbar snackbar;
+                             snackbar= Snackbar.make(relativeLayout,"Seguro que quiere salir?",Snackbar.LENGTH_LONG);
+                             View snackBarView = snackbar.getView();
+                             snackbar.setAction("SI", new View.OnClickListener() {
                                          @Override
                                          public void onClick(View v) {
+                                             /**Intent intent = new Intent(Intent.ACTION_MAIN);
+                                             intent.addCategory(Intent.CATEGORY_HOME);
+                                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                             startActivity(intent);
+                                             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);*/
+
                                              Intent intentExit = new Intent(ParkingMapsActivity.this, LoginMain.class);
                                              startActivity(intentExit);
                                          }
-                                     })
-                                     .show();
+                                     });
+
+                             //ACTION
+                             snackbar.setActionTextColor(Color.WHITE);
+                             //BACKGROUND
+                             snackBarView.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+                             //TEXT
+                             TextView textView = (TextView) snackBarView.findViewById(android.support.design.R.id.snackbar_text);
+                             textView.setTextColor(Color.WHITE);
+
+                             snackbar.show();
 
                              break;
                          case R.id.nav_map:
@@ -99,6 +116,7 @@ public class ParkingMapsActivity extends AppCompatActivity implements OnMapReady
                          case R.id.nav_user:
                              Intent intentUser = new Intent(ParkingMapsActivity.this, VistaUsuarioRegistradoMain.class);
                              startActivity(intentUser);
+                             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
                              break;
                      }

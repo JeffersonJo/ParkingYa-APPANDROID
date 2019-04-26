@@ -1,5 +1,6 @@
 package com.example.jeffe.login;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -64,8 +65,15 @@ public class Reservations extends AppCompatActivity implements View.OnClickListe
 
                     if (success) {
                         Intent intent = new Intent(Reservations.this, ParkingMapsActivity.class);
-                        Reservations.this.startActivity(intent);
+                        final ProgressDialog progressDialog = new ProgressDialog(Reservations.this);
+                        progressDialog.setMessage("Creando Reserva...");
+                        progressDialog.setIndeterminate(false);
+                        progressDialog.dismiss();
+                        progressDialog.show();
                         Toasty.success(Reservations.this, "Rerservado con exito !", Toast.LENGTH_SHORT, true).show();
+                        Reservations.this.startActivity(intent);
+
+                        //Toasty.success(Reservations.this, "Rerservado con exito !", Toast.LENGTH_SHORT, true).show();
                     } else {
                         AlertDialog.Builder builder = new AlertDialog.Builder(Reservations.this);
                         builder.setMessage("Error al reservar")
