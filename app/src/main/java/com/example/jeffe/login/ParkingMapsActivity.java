@@ -46,9 +46,18 @@ public class ParkingMapsActivity extends AppCompatActivity implements OnMapReady
 
     private static final LatLng PARKING_BUENAVISTA = new LatLng(11.013759466883691,-74.82715186779973);
 
+    private static final LatLng PARKING_CENTRO_HISTORICO = new LatLng(10.985344995037604,-74.77950669690227);
+
+    private static final LatLng PARKING_PASEO_BOLIVAR = new LatLng(10.979223530649021,-74.7792902873071);
+
+    private static final LatLng PARKING_51B = new LatLng(11.008818255553496,-74.82293519239744);
+
     private GoogleMap mMap;
     private Marker pPrado;
     private Marker pBuenavista;
+    private Marker pCentro;
+    private Marker pPaseoBolivar;
+    private Marker p51B;
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
     private boolean mPermissionDenied = false;
     private RelativeLayout relativeLayout;
@@ -163,6 +172,9 @@ public class ParkingMapsActivity extends AppCompatActivity implements OnMapReady
         LatLngBounds bounds = new LatLngBounds.Builder()
                 .include(PARKING_EL_PRADO)
                 .include(PARKING_BUENAVISTA)
+                .include(PARKING_CENTRO_HISTORICO)
+                .include(PARKING_PASEO_BOLIVAR)
+                .include(PARKING_51B)
                 .build();
         mMap.moveCamera(CameraUpdateFactory.newLatLngBounds(bounds, 50));
 
@@ -196,6 +208,21 @@ public class ParkingMapsActivity extends AppCompatActivity implements OnMapReady
         pBuenavista = mMap.addMarker(new MarkerOptions()
                 .position(PARKING_BUENAVISTA)
                 .title("Parking Ya! - BUENAVISTA")
+                .snippet("Horario de atención: 6:00 am - 10:00 pm"));
+
+        pCentro = mMap.addMarker(new MarkerOptions()
+                .position(PARKING_CENTRO_HISTORICO)
+                .title("Parking Ya! - CENTRO HISTORICO")
+                .snippet("Horario de atención: 6:00 am - 08:00 pm"));
+
+        pPaseoBolivar = mMap.addMarker(new MarkerOptions()
+                .position(PARKING_PASEO_BOLIVAR)
+                .title("Parking Ya! - PASEO BOLIVAR")
+                .snippet("Horario de atención: 6:00 am - 08:00 pm"));
+
+        p51B = mMap.addMarker(new MarkerOptions()
+                .position(PARKING_51B)
+                .title("Parking Ya! - 51B")
                 .snippet("Horario de atención: 6:00 am - 10:00 pm"));
 
     }
