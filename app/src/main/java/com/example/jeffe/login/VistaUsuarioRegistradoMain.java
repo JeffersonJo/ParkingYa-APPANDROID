@@ -18,6 +18,7 @@ import android.widget.TextView;
 public class VistaUsuarioRegistradoMain extends AppCompatActivity {
 
     private RelativeLayout RelativeLayoutUser;
+    private TextView t1_name, t2_email, t3_pass, t4_age, t5_address, t6_tel;
 
 
     @Override
@@ -27,16 +28,16 @@ public class VistaUsuarioRegistradoMain extends AppCompatActivity {
 
         RelativeLayoutUser= findViewById(R.id.RelativeLayoutUser);
 
-        TextView textView_NombreRegis = (TextView) findViewById(R.id.textView_NombreRegis);
-        TextView textView_UsuarioRegis = (TextView) findViewById(R.id.txtV_email_user);
-        TextView textView_PasswordRegis = (TextView) findViewById(R.id.textView_PasswordRegis);
-        TextView textView_EdadRegis = (TextView) findViewById(R.id.textView_EdadRegis);
-        TextView textView_addressRegis = (TextView) findViewById(R.id.textView_addressRegis);
-        TextView txtV_tel_reg_user = (TextView) findViewById(R.id.txtV_tel_reg_user);
+         t1_name = (TextView) findViewById(R.id.textView_NombreRegis);
+         t2_email = (TextView) findViewById(R.id.txtV_email_user);
+         t3_pass = (TextView) findViewById(R.id.textView_PasswordRegis);
+         t4_age = (TextView) findViewById(R.id.textView_EdadRegis);
+         t5_address = (TextView) findViewById(R.id.textView_addressRegis);
+         t6_tel = (TextView) findViewById(R.id.txtV_tel_reg_user);
 
         Intent intent = getIntent();
         String name = intent.getStringExtra("name");
-        String usuario = intent.getStringExtra("email");
+        String email = intent.getStringExtra("email");
         String password = intent.getStringExtra("password");
         //cambiar a string - agregar ciudad??
         //int age= intent.getIntExtra("age", -1);
@@ -45,13 +46,13 @@ public class VistaUsuarioRegistradoMain extends AppCompatActivity {
         String phone = intent.getStringExtra("phone");
 
 
-        textView_NombreRegis.setText(name);
-        textView_UsuarioRegis.setText(usuario);
-        textView_PasswordRegis.setText(password);
+        t1_name.setText(name);
+        t2_email.setText(email);
+        t3_pass.setText(password);
         //cambiar a string
-        textView_EdadRegis.setText(age);
-        textView_addressRegis.setText(address);
-        txtV_tel_reg_user.setText(phone);
+        t4_age.setText(age);
+        t5_address.setText(address);
+        t6_tel.setText(phone);
 
         BottomNavigationView navigationActivity= (BottomNavigationView) findViewById(R.id.user_page_navigation);
         navigationActivity.setOnNavigationItemSelectedListener(OpenActivity);
@@ -61,6 +62,47 @@ public class VistaUsuarioRegistradoMain extends AppCompatActivity {
 
 
     }
+
+    /**@Override
+    protected void onSaveInstanceState(Bundle outState) {
+        // TODO Auto-generated method stub
+        super.onSaveInstanceState(outState);
+        String txt1_name = t1_name.getText().toString();
+        String txt2_email = t2_email.getText().toString();
+        String txt3_pass = t3_pass.getText().toString();
+        String txt4_age  = t4_age.getText().toString();
+        String txt5_address = t5_address.getText().toString();
+        String txt6_tel  = t6_tel.getText().toString();
+
+        outState.putString("nameSaved", txt1_name);
+        outState.putString("emailSaved", txt2_email);
+        outState.putString("passwordSaved", txt3_pass);
+        outState.putString("ageSaved", txt4_age);
+        outState.putString("addressSaved", txt5_address);
+        outState.putString("phoneSaved", txt6_tel);
+
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        // TODO Auto-generated method stub
+        super.onRestoreInstanceState(savedInstanceState);
+        String txtV1_name = savedInstanceState.getString("nameSaved");
+        String txtV2_email = savedInstanceState.getString("emailSaved");
+        String txtV3_pass = savedInstanceState.getString("passwordSaved");
+        String txtV4_age = savedInstanceState.getString("ageSaved");
+        String txtV5_address = savedInstanceState.getString("addressSaved");
+        String txtV6_tel= savedInstanceState.getString("phoneSaved");
+
+        t1_name.setText(txtV1_name);
+        t2_email.setText(txtV2_email);
+        t3_pass.setText(txtV3_pass);
+        t4_age.setText(txtV4_age);
+        t5_address.setText(txtV5_address);
+        t6_tel.setText(txtV6_tel);
+    }*/
+
+
 
     private BottomNavigationView.OnNavigationItemSelectedListener OpenActivity=
             new BottomNavigationView.OnNavigationItemSelectedListener() {

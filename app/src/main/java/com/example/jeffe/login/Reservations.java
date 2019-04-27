@@ -19,6 +19,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import es.dmoral.toasty.Toasty;
+import com.creativityapps.gmailbackgroundlibrary.BackgroundMail;
 
 public class Reservations extends AppCompatActivity implements View.OnClickListener {
 
@@ -49,6 +50,8 @@ public class Reservations extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
+
+        sendTestEmail();
 
         final String name_park = nombre_park_a_reservar.getText().toString();
         final String license_user = placa_usuario_a_reservar.getText().toString();
@@ -93,4 +96,30 @@ public class Reservations extends AppCompatActivity implements View.OnClickListe
         RequestQueue queue = Volley.newRequestQueue(Reservations.this);
         queue.add(reservationsRequest);
     }
-}
+
+    private void sendTestEmail() {
+
+            BackgroundMail.newBuilder(this)
+                    .withUsername("noreplyparkingya@gmail.com")
+                    .withPassword("park100891")
+                    .withMailto("jeffersonj-o@hotmail.com")
+                    .withSubject("CONFIRMACION DE RESERVA")
+                    .withBody("Reserva para el vehiculo con numero de placa "
+                              +placa_usuario_a_reservar.getText().toString()
+                              + " su codigo de verficacion es #215")
+
+                    .withOnSuccessCallback(new BackgroundMail.OnSuccessCallback() {
+                        @Override
+                        public void onSuccess() {
+                            //do some magic
+                        }
+                    })
+                    .withOnFailCallback(new BackgroundMail.OnFailCallback() {
+                        @Override
+                        public void onFail() {
+                            //do some magic
+                        }
+                    })
+                    .send();
+        }
+    }

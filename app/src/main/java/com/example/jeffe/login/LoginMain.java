@@ -108,6 +108,8 @@ public class LoginMain extends AppCompatActivity {
 
 
     public void ingresarLogin(View view){
+        
+        enviarDatosReservas();
 
         final String email= txtInputEmail.getText().toString();
         final String password= txtInputContraseña.getText().toString();
@@ -164,6 +166,25 @@ public class LoginMain extends AppCompatActivity {
        if(!validateEmail() | !validateContraseña()){
             return;
         }
+    }
+
+    private void enviarDatosReservas() {
+
+        final String email= txtInputEmail.getText().toString();
+        final String password= txtInputContraseña.getText().toString();
+        String name= jsonResponse.getString("name");
+        String age= jsonResponse.getString("age");
+        String address= jsonResponse.getString("address");
+        String phone= jsonResponse.getString("phone");
+
+        //Enviar datos a otro activity
+        Intent intent= new Intent(LoginMain.this, Reservations.class);
+        intent.putExtra("name", name);
+        intent.putExtra("email", email);
+        intent.putExtra("age", age);
+        intent.putExtra("password", password);
+        intent.putExtra("address", address);
+        intent.putExtra("phone", phone);
     }
 
     public void onClick(View view) {
