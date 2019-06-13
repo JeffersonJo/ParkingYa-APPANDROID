@@ -313,6 +313,7 @@ public class ParkingMapsActivity extends AppCompatActivity implements OnMapReady
                         //Enviar nombre del parqueadero
                         Intent intentReserv = new Intent(ParkingMapsActivity.this, Reservations.class);
                         intentReserv.putExtra("name_park", name_park);
+                        AbirDialogAlert();
                         startActivity(intentReserv);
                     }
                 });
@@ -333,4 +334,15 @@ public class ParkingMapsActivity extends AppCompatActivity implements OnMapReady
                 //MapsActivity.this.startActivity(intentFragment);
 
         }
+
+    private void AbirDialogAlert() {
+        Reservations reservations = new Reservations();
+        reservations.show(getSupportFragmentManager(), "example dialog");
     }
+
+    /**@Override
+    public void applyTexts(String username, String password) {
+    textViewUsername.setText(username);
+    textViewPassword.setText(password);
+    }*/
+}

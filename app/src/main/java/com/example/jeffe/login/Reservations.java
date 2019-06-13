@@ -1,10 +1,13 @@
 package com.example.jeffe.login;
 
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatDialogFragment;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,37 +24,38 @@ import org.json.JSONObject;
 import es.dmoral.toasty.Toasty;
 import com.creativityapps.gmailbackgroundlibrary.BackgroundMail;
 
-public class Reservations extends AppCompatActivity implements View.OnClickListener {
+public class Reservations extends AppCompatDialogFragment {
 
     EditText placa_usuario_a_reservar, horas_a_reservar;
 
-    TextView nombre_park_a_reservar;
+    //TextView nombre_park_a_reservar;
 
-    Button btn_reg_reserv;
+    //Button btn_reg_reserv;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_reservations);
+    public Dialog onCreateDialog(Bundle savedInstanceState) {
 
-        nombre_park_a_reservar = (TextView) findViewById(R.id.nombre_park_a_reservar);
-        placa_usuario_a_reservar = (EditText) findViewById(R.id.placa_usuario_a_reservar);
-        horas_a_reservar = (EditText) findViewById(R.id.horas_a_reservar);
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+
+        LayoutInflater inflater = getActivity().getLayoutInflater();
+        View view = inflater.inflate(R.layout.activity_dialog_reserv, null);
+
+        //nombre_park_a_reservar = view.findViewById(R.id.nombre_park_a_reservar);
+        placa_usuario_a_reservar = view.findViewById(R.id.placa_usuario_a_reservar);
+        horas_a_reservar = view.findViewById(R.id.horas_a_reservar);
 
         //Obtener el nombre del parqueadero
-        Intent intent = getIntent();
-        String name_park = intent.getStringExtra("name_park");
+        /**Intent intent = getIntent();
+         String name_park = intent.getStringExtra("name_park");
 
-        nombre_park_a_reservar.setText(name_park);
+         nombre_park_a_reservar.setText(name_park);
 
-        btn_reg_reserv = findViewById(R.id.btn_reg_reserv);
-        btn_reg_reserv.setOnClickListener(this);
+         btn_reg_reserv = view.findViewById(R.id.btn_reg_reserv);
+         btn_reg_reserv.setOnClickListener(this);*/
     }
 
     @Override
     public void onClick(View v) {
-
-        sendTestEmail();
 
         final String name_park = nombre_park_a_reservar.getText().toString();
         final String license_user = placa_usuario_a_reservar.getText().toString();
@@ -75,6 +79,8 @@ public class Reservations extends AppCompatActivity implements View.OnClickListe
                         progressDialog.show();
                         Toasty.success(Reservations.this, "Rerservado con exito !", Toast.LENGTH_SHORT, true).show();
                         Reservations.this.startActivity(intent);
+
+                        sendTestEmail();
 
                         //Toasty.success(Reservations.this, "Rerservado con exito !", Toast.LENGTH_SHORT, true).show();
                     } else {
