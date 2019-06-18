@@ -296,7 +296,12 @@ public class ParkingMapsActivity extends AppCompatActivity implements OnMapReady
     @Override
     public void onInfoWindowClick(final Marker marker) {
 
-                final String name_park= pPrado.getTitle();
+               /** final String name_park= pPrado.getTitle();
+        //Enviar nombre del parqueadero
+        Intent intentReserv = new Intent(ParkingMapsActivity.this, Reservations.class);
+        intentReserv.putExtra("name_park", name_park);
+        AbirDialogAlert();
+        startActivity(intentReserv);*/
 
                 Snackbar snackbar;
                 snackbar = Snackbar.make(relativeLayout, "Esta seguro que desea reservar aqui?", Snackbar.LENGTH_LONG);
@@ -310,11 +315,8 @@ public class ParkingMapsActivity extends AppCompatActivity implements OnMapReady
                         snackBarOneView.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
                         snackbarOne.show();*/
 
-                        //Enviar nombre del parqueadero
-                        Intent intentReserv = new Intent(ParkingMapsActivity.this, Reservations.class);
-                        intentReserv.putExtra("name_park", name_park);
                         AbirDialogAlert();
-                        startActivity(intentReserv);
+
                     }
                 });
                 //ACTION
@@ -336,9 +338,14 @@ public class ParkingMapsActivity extends AppCompatActivity implements OnMapReady
         }
 
     private void AbirDialogAlert() {
+        ExampleDialog exampleDialog = new ExampleDialog();
+        exampleDialog.show(getSupportFragmentManager(), "example dialog");
+    }
+
+    /**private void AbirDialogAlert() {
         Reservations reservations = new Reservations();
         reservations.show(getSupportFragmentManager(), "example dialog");
-    }
+    }*/
 
     /**@Override
     public void applyTexts(String username, String password) {

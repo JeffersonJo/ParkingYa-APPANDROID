@@ -28,7 +28,7 @@ public class Reservations extends AppCompatDialogFragment {
 
     EditText placa_usuario_a_reservar, horas_a_reservar;
 
-    //TextView nombre_park_a_reservar;
+    TextView nombre_park_a_reservar;
 
     //Button btn_reg_reserv;
 
