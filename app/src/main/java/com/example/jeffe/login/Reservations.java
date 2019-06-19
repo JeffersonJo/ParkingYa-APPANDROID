@@ -24,9 +24,9 @@ import org.json.JSONObject;
 import es.dmoral.toasty.Toasty;
 import com.creativityapps.gmailbackgroundlibrary.BackgroundMail;
 
-public class Reservations extends AppCompatDialogFragment {
+public class Reservations extends AppCompatDialogFragment {}
 
-    EditText placa_usuario_a_reservar, horas_a_reservar;
+   /** EditText placa_usuario_a_reservar, horas_a_reservar;
 
     TextView nombre_park_a_reservar;
 
@@ -51,7 +51,7 @@ public class Reservations extends AppCompatDialogFragment {
          nombre_park_a_reservar.setText(name_park);
 
          btn_reg_reserv = view.findViewById(R.id.btn_reg_reserv);
-         btn_reg_reserv.setOnClickListener(this);*/
+         btn_reg_reserv.setOnClickListener(this);
     }
 
     @Override
@@ -128,4 +128,4 @@ public class Reservations extends AppCompatDialogFragment {
                     })
                     .send();
         }
-    }
+    }*/

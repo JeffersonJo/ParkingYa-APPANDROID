@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatDialogFragment;
@@ -26,10 +27,10 @@ import es.dmoral.toasty.Toasty;
 
 public class ExampleDialog extends AppCompatDialogFragment {
 
-    private EditText editTextUsername;
-    private EditText editTextPassword;
+    //private EditText editTextUsername;
+   // private EditText editTextPassword;
 
-    private TextView horas_a_reservar;
+    //private TextView horas_a_reservar;
 
     //private ExampleDialogListener listener;
 
@@ -40,6 +41,7 @@ public class ExampleDialog extends AppCompatDialogFragment {
 
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View view = inflater.inflate(R.layout.layout_dialog, null);
+        //horas_a_reservar = view.findViewById(R.id.horas_a_reservar);
 
         builder.setView(view)
                 .setTitle("RESERVAS PARKING YA!")
@@ -53,14 +55,16 @@ public class ExampleDialog extends AppCompatDialogFragment {
                 .setPositiveButton("reservar", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-
-                       final String name_park = editTextUsername.getText().toString();
-                       final String license_user = editTextPassword.getText().toString();
-
-                        final String hours_reserv = horas_a_reservar.getText().toString();
                         //listener.applyTexts(username, password);
 
-                        Response.Listener<String> respoListerner = new Response.Listener<String>() {
+                        Toasty.success(getContext(), "Rerservado con exito !", Toast.LENGTH_SHORT, true).show();
+
+                        //final String name_park = editTextUsername.getText().toString();
+                        //final String license_user = editTextPassword.getText().toString();
+
+//        final String hours_reserv = horas_a_reservar.getText().toString();
+
+                        /**Response.Listener<String> respoListerner = new Response.Listener<String>() {
 
                             @Override
                             public void onResponse(String response) {
@@ -70,20 +74,13 @@ public class ExampleDialog extends AppCompatDialogFragment {
                                     boolean success = jsonresponse.getBoolean("success");
 
                                     if (success) {
-                                        Intent intent = new Intent(Reservations.this, ParkingMapsActivity.class);
-                                        final ProgressDialog progressDialog = new ProgressDialog(ParkingMapsActivity.this);
-                                        progressDialog.setMessage("Creando Reserva...");
-                                        progressDialog.setIndeterminate(false);
-                                        progressDialog.dismiss();
-                                        progressDialog.show();
-                                        Toasty.success(Reservations.this, "Rerservado con exito !", Toast.LENGTH_SHORT, true).show();
-                                        Reservations.this.startActivity(intent);
+                                        //Intent intent = new Intent(getActivity(), ExampleDialog.class);
 
-                                        sendTestEmail();
+                                        //startActivity(intent);
 
                                         //Toasty.success(Reservations.this, "Rerservado con exito !", Toast.LENGTH_SHORT, true).show();
                                     } else {
-                                        AlertDialog.Builder builder = new AlertDialog.Builder(Reservations.this);
+                                        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity().getApplicationContext());
                                         builder.setMessage("Error al reservar")
                                                 .setNegativeButton("Reintentar", null)
                                                 .create().show();
@@ -95,22 +92,27 @@ public class ExampleDialog extends AppCompatDialogFragment {
                                 }
 
                             }
-                        };
+                        };*/
 
-                        ReservationsRequest reservationsRequest = new ReservationsRequest(name_park, license_user, hours_reserv, respoListerner);
-                        RequestQueue queue = Volley.newRequestQueue(Reservations.this);
-                        queue.add(reservationsRequest);
+                       // ReservationsRequest reservationsRequest = new ReservationsRequest(name_park, license_user, respoListerner);
+                        //RequestQueue queue = Volley.newRequestQueue(getActivity().getApplicationContext());
+                       // queue.add(reservationsRequest);
                     }
+
                 });
 
-        editTextUsername = view.findViewById(R.id.editTextUsername);
-        editTextPassword = view.findViewById(R.id.editTextPassword);
-        horas_a_reservar = view.findViewById(R.id.horas_a_reservar);
 
-        return builder.create();
-    }
+    //editTextUsername = view.findViewById(R.id.editTextUsername);
+    //editTextPassword = view.findViewById(R.id.editTextPassword);
+    return builder.create();
+   }
 
-    private void sendTestEmail() {
+}
+
+
+
+
+    /**private void sendTestEmail() {
 
         BackgroundMail.newBuilder(this)
                 .withUsername("noreplyparkingya@gmail.com")
@@ -136,7 +138,7 @@ public class ExampleDialog extends AppCompatDialogFragment {
                 .send();
     }
 
-    /**@Override
+    @Override
     public void onAttach(Context context) {
     super.onAttach(context);
 
@@ -151,5 +153,3 @@ public class ExampleDialog extends AppCompatDialogFragment {
     public interface ExampleDialogListener {
     void applyTexts(String username, String password);
     }*/
-
-}

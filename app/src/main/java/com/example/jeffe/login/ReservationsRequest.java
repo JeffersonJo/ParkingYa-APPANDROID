@@ -9,15 +9,15 @@ import java.util.Map;
 
 public class ReservationsRequest extends StringRequest {
 
-    private static final String REGISTRO_RESERV_URL="http://192.168.1.57:8080/ReservDates.php";
+    private static final String REGISTRO_RESERV_URL="http://192.168.1.58:8080/ReservDates.php";
     private Map<String,String> params;
-    public ReservationsRequest(String name_park, String license, String hours, Response.Listener<String>listerner){
+    public ReservationsRequest(String name_park, String license, Response.Listener<String>listerner){
         super(Request.Method.POST, REGISTRO_RESERV_URL,listerner,null);
 
         params= new HashMap<>();
         params.put("name_park",name_park);
         params.put("license",license);
-        params.put("hours",hours);
+        //params.put("hours",hours);
     }
 
     @Override
