@@ -1,16 +1,9 @@
 package com.example.jeffe.login;
 
 import android.app.DatePickerDialog;
-import android.app.NotificationChannel;
-import android.app.NotificationChannelGroup;
-import android.app.NotificationManager;
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
-import android.support.design.widget.Snackbar;
-import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,9 +11,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
@@ -31,11 +21,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Calendar;
-import java.util.Date;
 
 import es.dmoral.toasty.Toasty;
 
-public class RegistroMain extends AppCompatActivity implements View.OnClickListener {
+public class RegisterMain extends AppCompatActivity implements View.OnClickListener {
 
 
     DatePickerDialog datePickerDialog;
@@ -51,7 +40,7 @@ public class RegistroMain extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_registro_main);
+        setContentView(R.layout.activity_register_main);
 
         nombre_a_registro=(EditText)findViewById(R.id.editText_RegNombre);
         correo_a_registro=(EditText)findViewById(R.id.editText_RegCorreo);
@@ -74,7 +63,7 @@ public class RegistroMain extends AppCompatActivity implements View.OnClickListe
                 int mes = c.get(Calendar.MONTH);
                 int ano = c.get(Calendar.YEAR);
 
-                datePickerDialog= new DatePickerDialog(RegistroMain.this, new DatePickerDialog.OnDateSetListener() {
+                datePickerDialog= new DatePickerDialog(RegisterMain.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int mYear, int mMonth, int mDay) {
 
@@ -102,7 +91,6 @@ public class RegistroMain extends AppCompatActivity implements View.OnClickListe
         }
 
     }
-
 
             //| correoInput.isEmpty() | passInput.isEmpty() | edadInput.isEmpty() |
            //direccionInput.isEmpty() | telInput.isEmpty()){
@@ -142,11 +130,11 @@ public class RegistroMain extends AppCompatActivity implements View.OnClickListe
                     boolean success= jsonresponse.getBoolean("success");
 
                     if(success){
-                        Intent intent= new Intent(RegistroMain.this,LoginMain.class);
-                        RegistroMain.this.startActivity(intent);
-                        Toasty.success(RegistroMain.this, "Registrado con exito !", Toast.LENGTH_SHORT, true).show();
+                        Intent intent= new Intent(RegisterMain.this,LoginMain.class);
+                        RegisterMain.this.startActivity(intent);
+                        Toasty.success(RegisterMain.this, "Registrado con exito !", Toast.LENGTH_SHORT, true).show();
                     }else{
-                        AlertDialog.Builder builder= new AlertDialog.Builder(RegistroMain.this);
+                        AlertDialog.Builder builder= new AlertDialog.Builder(RegisterMain.this);
                         builder.setMessage("Error al registrar")
                                 .setNegativeButton("Reintentar",null)
                                 .create().show();
@@ -164,8 +152,8 @@ public class RegistroMain extends AppCompatActivity implements View.OnClickListe
             return;
         }
 
-        RegistroRequest registroRequest= new RegistroRequest(name, email, age, password, address, phone, respoListerner);
-        RequestQueue queue= Volley.newRequestQueue(RegistroMain.this);
+        RegisterRequest registroRequest= new RegisterRequest(name, email, age, password, address, phone, respoListerner);
+        RequestQueue queue= Volley.newRequestQueue(RegisterMain.this);
         queue.add(registroRequest);
 
     }

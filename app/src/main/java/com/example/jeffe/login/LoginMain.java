@@ -2,7 +2,6 @@ package com.example.jeffe.login;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -40,8 +39,20 @@ public class LoginMain extends AppCompatActivity {
         txtInputContraseña= findViewById(R.id.editText_LoginPass);
 
 
-        textView_RegisterLogin= (TextView)findViewById(R.id.textView_RegisterLogin);
-        btn_Enter= findViewById(R.id.btn_Enter);
+        textView_RegisterLogin= (TextView)findViewById(R.id.textView_registerLogin);
+        btn_Enter= findViewById(R.id.btn_enter);
+        /**btn_Enter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                switch (v.getId()){
+
+                    case R.id.btn_Enter:
+                        FragmentPerfil();
+                        break;
+                }
+            }
+
+        });*/
 
         //Crear acceso directo
         /**appPreferences= PreferenceManager.getDefaultSharedPreferences(this);
@@ -93,7 +104,7 @@ public class LoginMain extends AppCompatActivity {
         }
     } */
 
-    private boolean validateContraseña(){
+    private boolean validatePass(){
         String contraseñaInput= txtInputContraseña.getText().toString().trim();
 
         if(contraseñaInput.isEmpty()){
@@ -107,7 +118,7 @@ public class LoginMain extends AppCompatActivity {
 
 
 
-    public void ingresarLogin(View view){
+    public void AccessLogin(View view){
 
         final String email= txtInputEmail.getText().toString();
         final String password= txtInputContraseña.getText().toString();
@@ -126,7 +137,7 @@ public class LoginMain extends AppCompatActivity {
                         String phone= jsonResponse.getString("phone");
 
                         //Enviar datos a otro activity
-                        Intent intent= new Intent(LoginMain.this, VistaUsuarioRegistradoMain.class);
+                        Intent intent= new Intent(LoginMain.this, UserRegistredMain.class);
                         intent.putExtra("name", name);
                         intent.putExtra("email", email);
                         intent.putExtra("age", age);
@@ -138,9 +149,7 @@ public class LoginMain extends AppCompatActivity {
                         final ProgressDialog progressDialog = new ProgressDialog(LoginMain.this);
                         progressDialog.setMessage("Buscando parqueaderos...");
                         progressDialog.setIndeterminate(false);
-                        progressDialog.dismiss();
                         progressDialog.show();
-
                         LoginMain.this.startActivity(intent);
 
                     }else{
@@ -161,17 +170,16 @@ public class LoginMain extends AppCompatActivity {
         queue.add(loginRequest);
 
 
-       if(!validateEmail() | !validateContraseña()){
+       if(!validateEmail() | !validatePass()){
             return;
         }
     }
 
 
-    public void onClick(View view) {
+    public void onClick( View view) {
 
-        Intent intentRegistro= new Intent(LoginMain.this, RegistroMain.class);
+        Intent intentRegistro= new Intent(LoginMain.this, RegisterMain.class);
         LoginMain.this.startActivity(intentRegistro);
-
     }
 
 }

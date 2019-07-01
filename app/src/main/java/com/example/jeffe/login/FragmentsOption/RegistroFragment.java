@@ -20,7 +20,7 @@ import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
 import com.example.jeffe.login.LoginMain;
 import com.example.jeffe.login.R;
-import com.example.jeffe.login.RegistroRequest;
+import com.example.jeffe.login.RegisterRequest;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -130,7 +130,6 @@ public class RegistroFragment extends Fragment implements View.OnClickListener {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-
             }
         };
 
@@ -138,7 +137,7 @@ public class RegistroFragment extends Fragment implements View.OnClickListener {
             return;
         }
 
-        RegistroRequest registroRequest= new RegistroRequest(name, email, age, password, address, phone, respoListerner);
+        RegisterRequest registroRequest= new RegisterRequest(name, email, age, password, address, phone, respoListerner);
         RequestQueue queue= Volley.newRequestQueue(getActivity().getApplicationContext());
         queue.add(registroRequest);
 

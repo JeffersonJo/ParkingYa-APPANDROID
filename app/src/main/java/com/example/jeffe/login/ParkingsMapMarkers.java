@@ -1,33 +1,26 @@
 package com.example.jeffe.login;
 
 import android.Manifest;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.content.res.ColorStateList;
 import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
+
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
@@ -35,13 +28,13 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 
-public class ParkingMapsActivity extends AppCompatActivity implements OnMapReadyCallback,
+public class ParkingsMapMarkers extends AppCompatActivity implements OnMapReadyCallback,
                                                                       GoogleMap.OnInfoWindowClickListener,
                                                                       GoogleMap.OnMyLocationButtonClickListener,
                                                                       GoogleMap.OnMyLocationClickListener,
                                                                       ActivityCompat.OnRequestPermissionsResultCallback{
 
-
+    //Generar marcadores
     private static final LatLng PARKING_EL_PRADO = new LatLng(11.003199799999999, -74.8016502);
 
     private static final LatLng PARKING_BUENAVISTA = new LatLng(11.013759466883691,-74.82715186779973);
@@ -51,6 +44,7 @@ public class ParkingMapsActivity extends AppCompatActivity implements OnMapReady
     private static final LatLng PARKING_PASEO_BOLIVAR = new LatLng(10.979223530649021,-74.7792902873071);
 
     private static final LatLng PARKING_51B = new LatLng(11.008818255553496,-74.82293519239744);
+
 
     private GoogleMap mMap;
     private Marker pPrado;
@@ -62,14 +56,14 @@ public class ParkingMapsActivity extends AppCompatActivity implements OnMapReady
     private boolean mPermissionDenied = false;
     private RelativeLayout relativeLayout;
 
-    public ParkingMapsActivity(){
+    public ParkingsMapMarkers(){
 
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_parking_maps);
+        setContentView(R.layout.activity_parking_maps_markers);
 
         relativeLayout =findViewById(R.id.capaRelativL);
 
@@ -102,8 +96,8 @@ public class ParkingMapsActivity extends AppCompatActivity implements OnMapReady
                                              startActivity(intent);
                                              overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
-                                             //Intent intentExit = new Intent(ParkingMapsActivity.this, LoginMain.class);
-                                             //startActivity(intentExit);
+                                             Intent intentExit = new Intent(ParkingsMapMarkers.this, LoginMain.class);
+                                             startActivity(intentExit);
                                          }
                                      });
 
@@ -119,11 +113,11 @@ public class ParkingMapsActivity extends AppCompatActivity implements OnMapReady
 
                              break;
                          case R.id.nav_map:
-                             Intent intentMap = new Intent(ParkingMapsActivity.this, ParkingMapsActivity.class);
+                             Intent intentMap = new Intent(ParkingsMapMarkers.this, ParkingsMapMarkers.class);
                              startActivity(intentMap);
                              break;
                          case R.id.nav_user:
-                             Intent intentUser = new Intent(ParkingMapsActivity.this, VistaUsuarioRegistradoMain.class);
+                             Intent intentUser = new Intent(ParkingsMapMarkers.this, UserRegistredMain.class);
                              startActivity(intentUser);
                              overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
@@ -133,6 +127,7 @@ public class ParkingMapsActivity extends AppCompatActivity implements OnMapReady
                  }
              };
 
+    //Metodo para abrir fragments no activitys
     /**private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
@@ -145,12 +140,12 @@ public class ParkingMapsActivity extends AppCompatActivity implements OnMapReady
 
                     break;
                 case R.id.nav_map:
-                    //Intent intentMap = new Intent(ParkingMapsActivity.this, ParkingMapsActivity.class);
+                    //Intent intentMap = new Intent(ParkingsMapMarkers.this, ParkingsMapMarkers.class);
                     //startActivity(intentMap);
                     break;
                 case R.id.nav_user:
                     selectedFrag= new FragmentPerfil();
-                    //Intent intent = new Intent(ParkingMapsActivity.this, VistaUsuarioRegistradoMain.class);
+                    //Intent intent = new Intent(ParkingsMapMarkers.this, UserRegistredMain.class);
                     //startActivity(intent);
                     break;
             }
@@ -179,9 +174,6 @@ public class ParkingMapsActivity extends AppCompatActivity implements OnMapReady
         mMap.moveCamera(CameraUpdateFactory.newLatLngBounds(bounds, 50));
 
         addMarkersToMap();
-
-        //Mostrar y alistar InfoWindow
-        //mMap.setInfoWindowAdapter(new CustomInfoWindow(MapsActivity.this));
 
         // Add a marker, and move the camera
         /**LatLng ParkPrado = new LatLng(11.003199799999999, -74.8016502);
@@ -298,7 +290,7 @@ public class ParkingMapsActivity extends AppCompatActivity implements OnMapReady
 
                /** final String name_park= pPrado.getTitle();
         //Enviar nombre del parqueadero
-        Intent intentReserv = new Intent(ParkingMapsActivity.this, Reservations.class);
+        Intent intentReserv = new Intent(ParkingsMapMarkers.this, ReservationsMain.class);
         intentReserv.putExtra("name_park", name_park);
         AbirDialogAlert();
         startActivity(intentReserv);*/
@@ -329,7 +321,7 @@ public class ParkingMapsActivity extends AppCompatActivity implements OnMapReady
 
                 snackbar.show();
 
-                //Toast.makeText(ParkingMapsActivity.this, "Todo bien, todo bien", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(ParkingsMapMarkers.this, "Todo bien, todo bien", Toast.LENGTH_SHORT).show();
                 //Snackbar.make(relativeLayout,"Reserva Confirmada !", R.color.colorPrimaryDark Snackbar.LENGTH_LONG).show();
 
                 //Intent intentFragment= new Intent(MapsActivity.this, ReservaActivity.class);
@@ -338,18 +330,8 @@ public class ParkingMapsActivity extends AppCompatActivity implements OnMapReady
         }
 
     private void AbirDialogAlert() {
-        ExampleDialog exampleDialog = new ExampleDialog();
-        exampleDialog.show(getSupportFragmentManager(), "example dialog");
+
+        DialogReservMain dialogReserv = new DialogReservMain();
+        dialogReserv.show(getSupportFragmentManager(), "dialog alert");
     }
-
-    /**private void AbirDialogAlert() {
-        Reservations reservations = new Reservations();
-        reservations.show(getSupportFragmentManager(), "example dialog");
-    }*/
-
-    /**@Override
-    public void applyTexts(String username, String password) {
-    textViewUsername.setText(username);
-    textViewPassword.setText(password);
-    }*/
 }

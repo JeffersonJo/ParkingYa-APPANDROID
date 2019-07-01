@@ -1,7 +1,6 @@
 package com.example.jeffe.login;
 
 
-import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
@@ -15,7 +14,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 
-public class VistaUsuarioRegistradoMain extends AppCompatActivity {
+public class UserRegistredMain extends AppCompatActivity {
 
     private RelativeLayout RelativeLayoutUser;
     private TextView t1_name, t2_email, t3_pass, t4_age, t5_address, t6_tel;
@@ -24,7 +23,7 @@ public class VistaUsuarioRegistradoMain extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_vista_usuario_registrado_main);
+        setContentView(R.layout.user_registered_main);
 
         RelativeLayoutUser= findViewById(R.id.RelativeLayoutUser);
 
@@ -122,7 +121,7 @@ public class VistaUsuarioRegistradoMain extends AppCompatActivity {
                                     intentExit.addCategory(Intent.CATEGORY_HOME);
                                     intentExit.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                     startActivity(intentExit);*/
-                                    Intent intentExit = new Intent(VistaUsuarioRegistradoMain.this, LoginMain.class);
+                                    Intent intentExit = new Intent(UserRegistredMain.this, LoginMain.class);
                                     startActivity(intentExit);
                                     overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
                                 }
@@ -138,12 +137,12 @@ public class VistaUsuarioRegistradoMain extends AppCompatActivity {
 
                             break;
                         case R.id.nav_map:
-                            Intent intentMap = new Intent(VistaUsuarioRegistradoMain.this, ParkingMapsActivity.class);
+                            Intent intentMap = new Intent(UserRegistredMain.this, ParkingsMapMarkers.class);
                             startActivity(intentMap);
                             overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
                             break;
                         case R.id.nav_user:
-                            Intent intentUser = new Intent(VistaUsuarioRegistradoMain.this, VistaUsuarioRegistradoMain.class);
+                            Intent intentUser = new Intent(UserRegistredMain.this, UserRegistredMain.class);
                             startActivity(intentUser);
                             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
@@ -170,7 +169,7 @@ public class VistaUsuarioRegistradoMain extends AppCompatActivity {
 
                 switch (menuItem.getItemId()) {
                     case R.id.nav_home:
-                        Intent intent = new Intent(VistaUsuarioRegistradoMain.this, LoginMain.class);
+                        Intent intent = new Intent(UserRegistredMain.this, LoginMain.class);
                         startActivity(intent);
                         break;
                 }

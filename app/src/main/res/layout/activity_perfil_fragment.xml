@@ -7,7 +7,7 @@
     xmlns:design="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:background="#ffff"
-    tools:context=".VistaUsuarioRegistradoMain">
+    tools:context=".UserRegistredMain">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -52,7 +52,7 @@
                     android:layout_marginTop="20dp"
                     android:layout_marginEnd="0dp"
                     android:layout_marginRight="0dp"
-                    android:hint="Jefferson Javier Ortega Pacheco"
+                    android:hint="Jefferson Javier Ortega Pacheco2"
                     android:textAlignment="center"
                     android:textColor="#FFFF"
                     android:textColorHint="#FFFF"

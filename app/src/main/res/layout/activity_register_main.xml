@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:id="@+id/RegistroCapa"
-    tools:context=".RegistroMain">
+    tools:context=".RegisterMain">
 
     <LinearLayout
         android:layout_width="match_parent"

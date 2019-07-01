@@ -24,7 +24,7 @@ import org.json.JSONObject;
 import es.dmoral.toasty.Toasty;
 import com.creativityapps.gmailbackgroundlibrary.BackgroundMail;
 
-public class Reservations extends AppCompatDialogFragment {}
+public class ReservationsMain extends AppCompatDialogFragment {}
 
    /** EditText placa_usuario_a_reservar, horas_a_reservar;
 
@@ -71,20 +71,20 @@ public class Reservations extends AppCompatDialogFragment {}
                     boolean success = jsonresponse.getBoolean("success");
 
                     if (success) {
-                        Intent intent = new Intent(Reservations.this, ParkingMapsActivity.class);
-                        final ProgressDialog progressDialog = new ProgressDialog(Reservations.this);
+                        Intent intent = new Intent(ReservationsMain.this, ParkingsMapMarkers.class);
+                        final ProgressDialog progressDialog = new ProgressDialog(ReservationsMain.this);
                         progressDialog.setMessage("Creando Reserva...");
                         progressDialog.setIndeterminate(false);
                         progressDialog.dismiss();
                         progressDialog.show();
-                        Toasty.success(Reservations.this, "Rerservado con exito !", Toast.LENGTH_SHORT, true).show();
-                        Reservations.this.startActivity(intent);
+                        Toasty.success(ReservationsMain.this, "Rerservado con exito !", Toast.LENGTH_SHORT, true).show();
+                        ReservationsMain.this.startActivity(intent);
 
                         sendTestEmail();
 
-                        //Toasty.success(Reservations.this, "Rerservado con exito !", Toast.LENGTH_SHORT, true).show();
+                        //Toasty.success(ReservationsMain.this, "Rerservado con exito !", Toast.LENGTH_SHORT, true).show();
                     } else {
-                        AlertDialog.Builder builder = new AlertDialog.Builder(Reservations.this);
+                        AlertDialog.Builder builder = new AlertDialog.Builder(ReservationsMain.this);
                         builder.setMessage("Error al reservar")
                                 .setNegativeButton("Reintentar", null)
                                 .create().show();
@@ -99,7 +99,7 @@ public class Reservations extends AppCompatDialogFragment {}
         };
 
         ReservationsRequest reservationsRequest = new ReservationsRequest(name_park, license_user, hours_reserv, respoListerner);
-        RequestQueue queue = Volley.newRequestQueue(Reservations.this);
+        RequestQueue queue = Volley.newRequestQueue(ReservationsMain.this);
         queue.add(reservationsRequest);
     }
 

@@ -1,4 +1,4 @@
-package com.example.jeffe.login;
+package com.example.jeffe.login.FragmentsOption;
 
 public class ReservationsClass {
 
