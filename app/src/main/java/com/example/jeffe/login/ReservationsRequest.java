@@ -9,7 +9,7 @@ import java.util.Map;
 
 public class ReservationsRequest extends StringRequest {
 
-    private static final String REGISTRO_RESERV_URL="http://192.168.1.58:8080/ReservDates.php";
+    private static final String REGISTRO_RESERV_URL="http://192.168.12.117/ReservDates.php";
     private Map<String,String> params;
     public ReservationsRequest(String name_park, String license, Response.Listener<String>listerner){
         super(Request.Method.POST, REGISTRO_RESERV_URL,listerner,null);

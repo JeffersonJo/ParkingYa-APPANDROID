@@ -1,9 +1,13 @@
 package com.example.jeffe.login;
 
+import android.annotation.TargetApi;
 import android.app.DatePickerDialog;
+import android.app.Notification;
 import android.content.Intent;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -21,6 +25,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Calendar;
+import java.util.Random;
 
 import es.dmoral.toasty.Toasty;
 
@@ -35,12 +40,15 @@ public class RegisterMain extends AppCompatActivity implements View.OnClickListe
              direccion_a_registro, tel_a_registro;
 
     Button btn_RegistUser;
+    private NotificationHelper helper;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_main);
+
+        helper = new NotificationHelper(this);
 
         nombre_a_registro=(EditText)findViewById(R.id.editText_RegNombre);
         correo_a_registro=(EditText)findViewById(R.id.editText_RegCorreo);
@@ -132,7 +140,9 @@ public class RegisterMain extends AppCompatActivity implements View.OnClickListe
                     if(success){
                         Intent intent= new Intent(RegisterMain.this,LoginMain.class);
                         RegisterMain.this.startActivity(intent);
+                        notificationUsers();
                         Toasty.success(RegisterMain.this, "Registrado con exito !", Toast.LENGTH_SHORT, true).show();
+
                     }else{
                         AlertDialog.Builder builder= new AlertDialog.Builder(RegisterMain.this);
                         builder.setMessage("Error al registrar")
@@ -156,5 +166,16 @@ public class RegisterMain extends AppCompatActivity implements View.OnClickListe
         RequestQueue queue= Volley.newRequestQueue(RegisterMain.this);
         queue.add(registroRequest);
 
+    }
+
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
+    private void notificationUsers() {
+
+        String title = "Bienvenido";
+        String text = nombre_a_registro.getText().toString()+" a nuestra app pruebala ya!";
+
+        Notification.Builder builder = helper.getRegisterUserChannelNotify(title,text)
+                    .setSmallIcon(R.mipmap.ic_launcher);
+        helper.getManager().notify(new Random().nextInt(),builder.build());
     }
 }

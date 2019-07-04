@@ -71,7 +71,7 @@ public class DialogReservMain extends AppCompatDialogFragment {
                     if (success) {
 
                         //Arreglar mensaje!!! no sal
-                        //Toast.makeText(getContext(), "Registro exitoso...!!!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "Registro exitoso...!!!", Toast.LENGTH_SHORT).show();
                         //sendTestEmail();
 
                     } else {
